@@ -1,0 +1,30 @@
+{% extends "base.html" %} {% block content %}
+<h2>Welcome to the College Student Portal</h2>
+
+{% if session.get('user') %}
+<p>Hello, {{ session['user'] }}! Use the buttons above to manage student data.</p>
+{% else %}
+<p>Please <a href="{{ url_for('login') }}">log in</a> to access the portal features.</p>
+{% endif %} {% if students %}
+<h4 class="mt-4">Student List</h4>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Roll</th>
+            <th>Class</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for student in students %}
+        <tr>
+            <td>{{ student[1] }}</td>
+            <td>{{ student[2] }}</td>
+            <td>{{ student[3] }}</td>
+            <td><a href="{{ url_for('student_info', student_id=student[0]) }}" class="btn btn-sm btn-info">View</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %} {% endblock %}

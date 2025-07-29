@@ -1,0 +1,47 @@
+{% extends "base.html" %} {% block content %}
+<h3>Student Profile</h3>
+
+<ul class="list-group mb-4">
+    <li class="list-group-item"><strong>Name:</strong> {{ student[1] }}</li>
+    <li class="list-group-item"><strong>Roll:</strong> {{ student[2] }}</li>
+    <li class="list-group-item"><strong>Class:</strong> {{ student[3] }}</li>
+</ul>
+
+<h4>Attendance</h4>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Subject</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for record in attendance %}
+        <tr>
+            <td>{{ record[3] }}</td>
+            <td>{{ record[2] }}</td>
+            <td>{{ record[4] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h4>Grades</h4>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Subject</th>
+            <th>Grade</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for grade in grades %}
+        <tr>
+            <td>{{ grade[2] }}</td>
+            <td>{{ grade[3] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
